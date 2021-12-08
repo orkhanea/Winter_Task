@@ -24,7 +24,7 @@ namespace Winter_Task.Models
         public string Website { get; set; }
 
         [Column(TypeName ="tinyint")]
-        public string RatingAmount { get; set; }
+        public int RatingAmount { get; set; }
 
         public DateTime CreatedDate { get; set; }
 

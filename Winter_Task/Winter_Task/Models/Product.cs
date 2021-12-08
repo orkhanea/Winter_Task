@@ -17,6 +17,7 @@ namespace Winter_Task.Models
         [MaxLength(100)]
         public string ProductName { get; set; }
 
+        [Column (TypeName ="decimal")]
         public decimal Price { get; set; }
 
         public bool isStock { get; set; }

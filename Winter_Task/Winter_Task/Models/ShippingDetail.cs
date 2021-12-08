@@ -31,6 +31,8 @@ namespace Winter_Task.Models
 
         [MaxLength(250)]
         public string Image { get; set; }
+
+        [NotMapped]
         public IFormFile ImageFile { get; set; }
 
 
