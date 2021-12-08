@@ -15,7 +15,7 @@ namespace Winter_Task.Models
         public int Id { get; set; }
         
         [MaxLength(30)]
-        public string ProductName { get; set; }
+        public string ProductCategoryName { get; set; }
 
         public List<Product> Product { get; set; }
 

@@ -1,4 +1,7 @@
-﻿<section class="breadcrumb breadcrumb_bg">
+﻿@model VmShop
+
+
+<section class="breadcrumb breadcrumb_bg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -13,62 +16,72 @@
 </section>
 
 
+
+
 <div class="product_image_area section_padding">
     <div class="container">
         <div class="row s_product_inner">
-            <div class="col-lg-5">
-                <div class="product_slider_img">
-                    <div id="vertical">
-                        <div data-thumb="img/product_details/prodect_details_1.png">
-                            <img src="~/img/product_details/xprodect_details_1.png.pagespeed.ic.9b3_zcFuZF.png" />
+            @{
+                foreach (var prod in Model.products)
+                {
+                    if (prod.Id == 1)
+                    {
+                        foreach (var img in Model.productImages)
+                        {
+                            if (img.ProductId == prod.Id)
+                            {
+                                <div class="col-lg-5">
+                                    <div class="product_slider_img">
+                                        <div id="vertical">
+                                            <div data-thumb="img/product_details/@img.Image">
+                                                <img src="~/img/product_details/@img.Image" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                        <div class="col-lg-5 offset-lg-1">
+                            <div class="s_product_text">
+                                <h3>@prod.ProductName</h3>
+                                <h2>$ @prod.Price</h2>
+                                <ul class="list">
+                                    <li>
+                                        <a class="active" href="#">
+                                            <span>Category</span> : @prod.ProductCategory.ProductCategoryName
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> <span>Availibility</span> : @(prod.isStock==true? "In Stockk" : "Out Of Stock")</a>
+                                    </li>
+                                </ul>
+                                <p>
+                                    @prod.Text
+                                </p>
+                                <div class="card_area">
+                                    <div class="product_count d-inline-block">
+                                        <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+                                        <input class="input-number" type="text" value="1" min="0" max="10">
+                                        <span class="number-increment"> <i class="ti-plus"></i></span>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a href="#" class="btn_3">add to cart</a>
+                                        <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
+                                    </div>
+                                    <div class="social_icon">
+                                        <a href="#" class="fb"><i class="ti-facebook"></i></a>
+                                        <a href="#" class="tw"><i class="ti-twitter-alt"></i></a>
+                                        <a href="#" class="li"><i class="ti-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div data-thumb="img/product_details/prodect_details_2.png">
-                            <img src="~/img/product_details/xprodect_details_2.png.pagespeed.ic.jxyatnEwu8.jpg" />
-                        </div>
-                        <div data-thumb="img/product_details/prodect_details_3.png">
-                            <img src="~/img/product_details/xprodect_details_3.png.pagespeed.ic.-z9WDGQiu5.png" />
-                        </div>
-                        <div data-thumb="img/product_details/prodect_details_4.png">
-                            <img src="~/img/product_details/prodect_details_4.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 offset-lg-1">
-                <div class="s_product_text">
-                    <h3>Faded SkyBlu Denim Jeans</h3>
-                    <h2>$149.99</h2>
-                    <ul class="list">
-                        <li>
-                            <a class="active" href="#">
-                                <span>Category</span> : Household
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"> <span>Availibility</span> : In Stock</a>
-                        </li>
-                    </ul>
-                    <p>
-                        Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time.
-                    </p>
-                    <div class="card_area">
-                        <div class="product_count d-inline-block">
-                            <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                            <input class="input-number" type="text" value="1" min="0" max="10">
-                            <span class="number-increment"> <i class="ti-plus"></i></span>
-                        </div>
-                        <div class="add_to_cart">
-                            <a href="#" class="btn_3">add to cart</a>
-                            <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
-                        </div>
-                        <div class="social_icon">
-                            <a href="#" class="fb"><i class="ti-facebook"></i></a>
-                            <a href="#" class="tw"><i class="ti-twitter-alt"></i></a>
-                            <a href="#" class="li"><i class="ti-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    }
+                }
+            }
+
         </div>
     </div>
 </div>
@@ -574,69 +587,4 @@
 </section>
 
 
-<section class="shipping_details section_padding border_top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_1.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_2.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_3.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_4.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="instagram_photo">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="instagram_photo_iner">
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_1.png.pagespeed.ic.P2wxzciKCE.jpg" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_2.png.pagespeed.ic.chZZo2JK1O.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_3.png.pagespeed.ic.mT4LWfdNcY.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_4.png.pagespeed.ic.doTUaEhvA_.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_5.png.pagespeed.ic.EJ3mKvkYaM.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@await Component.InvokeAsync("VcShipping");

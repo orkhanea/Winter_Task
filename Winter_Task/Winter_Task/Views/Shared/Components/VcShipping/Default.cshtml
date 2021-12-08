@@ -1,0 +1,24 @@
+﻿@model List<ShippingDetail>
+
+@{ 
+    Layout = null;
+}
+
+<section class="shipping_details section_padding border_top">
+    <div class="container">
+        <div class="row">
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single_shopping_details">
+                            <img src="~/img/icon/@item.Image" alt="">
+                            <h4>@item.Title</h4>
+                            <p>@item.Text</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

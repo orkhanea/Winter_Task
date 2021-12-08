@@ -1,4 +1,5 @@
-﻿<section class="breadcrumb breadcrumb_bg">
+﻿@model VmShopCatagory
+<section class="breadcrumb breadcrumb_bg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -33,24 +34,14 @@
                                         <div class="right ti-plus"></div>
                                     </a>
                                     <ul>
-                                        <li>
-                                            <a href="#Electronics">Home Appliances</a>
+                                       @{ 
+                                           foreach (var ctgr in Model.productCategories)
+                                           {
+                                                <li>
+                                            <a href="#Electronics">@ctgr.ProductCategoryName</a>
                                         </li>
-                                        <li>
-                                            <a href="#Electronics">Smartphones</a>
-                                        </li>
-                                        <li>
-                                            <a href="#Electronics">Kitchen Appliances</a>
-                                        </li>
-                                        <li>
-                                            <a href="#Electronics">Computer Accessories</a>
-                                        </li>
-                                        <li>
-                                            <a href="#Electronics">Meat Alternatives</a>
-                                        </li>
-                                        <li>
-                                            <a href="#Electronics">Appliances</a>
-                                        </li>
+                                           }
+                                       }
                                     </ul>
                                 </li>
                                 <li>
@@ -72,26 +63,16 @@
                         <div class="widgets_inner">
                             <ul class="list">
                                 <p>Brands</p>
-                                <li>
+                                
+                               @{ 
+                                   foreach (var brand in Model.brands)
+                                   {
+                                       <li>
                                     <input type="radio" aria-label="Radio button for following text input">
-                                    <a href="#">Apple</a>
+                                    <a href="#">@brand.BrandName</a>
                                 </li>
-                                <li>
-                                    <input type="radio" aria-label="Radio button for following text input">
-                                    <a href="#">Asus</a>
-                                </li>
-                                <li class="active">
-                                    <input type="radio" aria-label="Radio button for following text input">
-                                    <a href="#">Gionee</a>
-                                </li>
-                                <li>
-                                    <input type="radio" aria-label="Radio button for following text input">
-                                    <a href="#">Micromax</a>
-                                </li>
-                                <li>
-                                    <input type="radio" aria-label="Radio button for following text input">
-                                    <a href="#">Samsung</a>
-                                </li>
+                                   }
+                               }
                             </ul>
                             <ul class="list">
                                 <p>color</p>
@@ -167,10 +148,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
+                    @{ 
+                        foreach (var prod in Model.products)
+                        {
+                            <div class="col-lg-4 col-sm-6">
                         <div class="single_category_product">
                             <div class="single_category_img">
-                                <img src="~/img/category/xcategory_1.png.pagespeed.ic.XlmvDQh2Rs.png" alt="">
+                                @{ 
+                                    foreach (var img in Model.productImages)
+                                    {
+                                        if (prod.Id == img.ProductId)
+                                        {
+                                            <img src="~/img/product_details/@img.Image" alt="">
+                                            break;
+                                        }
+                                    }
+                                }
+                                
                                 <div class="category_social_icon">
                                     <ul>
                                         <li><a href="#"><i class="ti-heart"></i></a></li>
@@ -178,199 +172,16 @@
                                     </ul>
                                 </div>
                                 <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
+                                    <a asp-controller="Shop" asp-action="ProductDetails"><h5>@prod.ProductName</h5></a>
+                                    <p>$@prod.Price</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/xcategory_2.png.pagespeed.ic.XN8pDOT-i_.jpg" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/xcategory_3.png.pagespeed.ic.x7dQTzqn_K.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/xcategory_4.png.pagespeed.ic.8FZZz33dea.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/category_5.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/category_6.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><a href="single-product.html"><h5>Long Sleeve TShirt</h5></a></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/xcategory_7.png.pagespeed.ic.MagSo9caR4.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/xcategory_8.png.pagespeed.ic.57MlsW-tDZ.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/category_9.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/category_10.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/category_11.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="single_category_product">
-                            <div class="single_category_img">
-                                <img src="~/img/category/category_12.png" alt="">
-                                <div class="category_social_icon">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-heart"></i></a></li>
-                                        <li><a href="#"><i class="ti-bag"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="category_product_text">
-                                    <a href="single-product.html"><h5>Long Sleeve TShirt</h5></a>
-                                    <p>$150.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        }
+                    }
+                    
+                    
                     <div class="col-lg-12 text-center">
                         <a href="#" class="btn_2">More Items</a>
                     </div>
@@ -381,69 +192,5 @@
 </section>
 
 
-<section class="shipping_details section_padding border_top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_1.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_2.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_3.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="single_shopping_details">
-                    <img src="~/img/icon/icon_4.png" alt="">
-                    <h4>Free shipping</h4>
-                    <p>Divided face for bearing the divide unto seed winged divided light Forth.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-
-<section class="instagram_photo">
-    <div class="container-fluid>
-        <div class=" row">
-            <div class="col-lg-12">
-                <div class="instagram_photo_iner">
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_1.png.pagespeed.ic.P2wxzciKCE.jpg" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_2.png.pagespeed.ic.chZZo2JK1O.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_3.png.pagespeed.ic.mT4LWfdNcY.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_4.png.pagespeed.ic.doTUaEhvA_.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                    <div class="single_instgram_photo">
-                        <img src="~/img/instagram/xinst_5.png.pagespeed.ic.EJ3mKvkYaM.png" alt="">
-                        <a href="#"><i class="ti-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<partial name="_shippingPartial" model="Model.shippingDetails" />

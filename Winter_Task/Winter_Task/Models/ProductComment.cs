@@ -34,7 +34,7 @@ namespace Winter_Task.Models
         public Product Product { get; set; }
 
         [ForeignKey("ParentProductComment")]
-        public int ParentProductCommentId { get; set; }
+        public int? ParentProductCommentId { get; set; }
 
         public ProductComment ParentProductComment { get; set; }
 

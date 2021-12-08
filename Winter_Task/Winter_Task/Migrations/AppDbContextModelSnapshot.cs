@@ -446,7 +446,7 @@ namespace Winter_Task.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ProductName")
+                    b.Property<string>("ProductCategoryName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -473,7 +473,7 @@ namespace Winter_Task.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("ParentProductCommentId")
+                    b.Property<int?>("ParentProductCommentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Phone")
@@ -767,9 +767,7 @@ namespace Winter_Task.Migrations
                 {
                     b.HasOne("Winter_Task.Models.ProductComment", "ParentProductComment")
                         .WithMany()
-                        .HasForeignKey("ParentProductCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentProductCommentId");
 
                     b.HasOne("Winter_Task.Models.Product", "Product")
                         .WithMany("ProductComment")
